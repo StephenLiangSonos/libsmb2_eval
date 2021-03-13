@@ -81,14 +81,10 @@ void seek_and_read(int fd, int new_pos) {
 
     int count = 0;
     int pos = 0;
-    while ((count = read(fd, buf, bufsize)) > 0) {
-        if (count == -1) {
-            continue;
-        }
-        pos += count;
+    count = read(fd, buf, bufsize);
+    if (count < 0) {
+        fprintf(stderr, "failed to read\n");
     }
-
-    cout << "read " << pos << "B\n";
 
 }
 
@@ -106,12 +102,12 @@ void readfile(string& file) {
         exit(3);
     }
 
-    cout << "file:" << file << " size " << fs_stat.st_size << endl;
-
     seek_and_read(fd, fs_stat.st_size / 5);
     seek_and_read(fd, fs_stat.st_size / 4);
     seek_and_read(fd, fs_stat.st_size / 3);
     seek_and_read(fd, fs_stat.st_size / 2);
+
+    cout << "read from " << file << endl;
 
     close(fd);
 }
