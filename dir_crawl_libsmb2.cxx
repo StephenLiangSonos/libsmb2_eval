@@ -14,7 +14,7 @@
 using namespace std;
 
 int usage(void) {
-    printf("dir_crawl_smb2 <URL> <username> <password>\n"
+    printf("dir_crawl_smb2 <URL> <username> <password> <vers>\n"
            "  format: "
            "smb://<host>/<share>/<path>"
            "\n");
@@ -72,7 +72,16 @@ void lsdir(struct smb2_context* ctx, string path, vector<string>& results) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
+    if (argc < 5) {
+        usage();
+    }
+
+    smb2_negotiate_version ver;
+    if (argv[4][0] == '2') {
+        ver = SMB2_VERSION_ANY2;
+    } else if (argv[4][0] == '3') {
+        ver = SMB2_VERSION_ANY3;
+    } else {
         usage();
     }
 
@@ -92,6 +101,7 @@ int main(int argc, char *argv[]) {
 
     smb2_set_user(smb2, argv[2]);
     smb2_set_password(smb2, argv[3]);
+    smb2_set_version(smb2, ver);
 
     if (smb2_connect_share(smb2, url->server, url->share, url->user) < 0) {
         fprintf(stderr, "smb2_connect_share failed");
