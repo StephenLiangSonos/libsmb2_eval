@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DIR="."
+
+rm -rf testdirectory1
+
+for i in {1..10};
+do
+    DIR=$DIR/testdirectory$i
+    mkdir -p $DIR
+
+    for j in {1..10};
+    do
+        FILE=$DIR/testfile${j}
+        head -c ${j}MB /dev/urandom > $FILE
+    done
+done
