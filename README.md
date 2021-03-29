@@ -16,7 +16,7 @@ cd /sonos/src/tmp
 cmake -DCMAKE_INSTALL_PREFIX=. -DBUILD_SHARED_LIBS=0 /sonos/src/libsmb2
 make install -j8
 
-cd /sonos/src/libsmb2
+cd /sonos/src/libsmb2_eval
 LIBSMB_BASE=/sonos/src/tmp make -j8
 ```
 
