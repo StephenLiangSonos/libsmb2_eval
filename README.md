@@ -8,9 +8,9 @@ Example steps to compile for fenway with the powerpc-fenwayV3-linux-gnu toolchai
  - evaluation code at /sonos/src/libsmb2_eval
  - and temporary directory at /sonos/src/tmp
 
-export TOOLCHAIN=powerpc-fenwayV3-linux-gnu
-export CC=${TOOLCHAIN}-gcc
-export CXX=${TOOLCHAIN}-g++
+export TOOLCHAIN=powerpc-fenwayV3-linux-gnu-
+export CC=${TOOLCHAIN}gcc
+export CXX=${TOOLCHAIN}g++
 
 cd /sonos/src/tmp
 cmake -DCMAKE_INSTALL_PREFIX=. -DBUILD_SHARED_LIBS=0 /sonos/src/libsmb2
