@@ -1,6 +1,6 @@
 This project contains evaluation code for libsmb2
 
-To compile the test code, build and install libsmb2 first, then set the LIBSMB_BASE directory. A fork of libsmb2 exists at ```git@github.com:StephenLiangSonos/libsmb2.git```.
+To compile the test code, build and install libsmb2 first, then set the LIBSMB_BASE directory. The library exists on Github ```https://github.com/sahlberg/libsmb2.git```.
 
 ```
 Example steps to compile for fenway with the powerpc-fenwayV3-linux-gnu toolchain, given the directories:
