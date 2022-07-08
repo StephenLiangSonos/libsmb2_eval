@@ -1,2 +1,5 @@
 include/
 lib/
+lib_build/
+*_libsmb2
+*_syscall
